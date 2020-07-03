@@ -1,9 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-
-<!-- ここにページ毎のコンテンツを書く -->
- <h1>id: {{ $task->id }} の編集ページ</h1>
+<h1>id: {{ $task->id }} のタスク編集ページ</h1>
 
     <div class="row">
         <div class="col-6">
@@ -19,4 +17,7 @@
             {!! Form::close() !!}
         </div>
     </div>
+
+
+  
 @endsection

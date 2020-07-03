@@ -13,9 +13,10 @@ class TasksController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    // getでmessages/にアクセスされた場合の「一覧表示処理」
     public function index()
     {
-         // メッセージ一覧を取得
+        // メッセージ一覧を取得
         $tasks = Task::all();
 
         // メッセージ一覧ビューでそれを表示
@@ -48,13 +49,14 @@ class TasksController extends Controller
      */
     public function store(Request $request)
     {
-          // メッセージを作成
+         // メッセージを作成
         $task = new Task;
         $task->content = $request->content;
         $task->save();
 
         // トップページへリダイレクトさせる
         return redirect('/');
+        
     }
 
     /**
@@ -65,13 +67,14 @@ class TasksController extends Controller
      */
     public function show($id)
     {
-          // idの値でメッセージを検索して取得
+         // idの値でメッセージを検索して取得
         $task = Task::findOrFail($id);
 
         // メッセージ詳細ビューでそれを表示
         return view('tasks.show', [
             'task' => $task,
         ]);
+
     }
 
     /**
@@ -82,7 +85,6 @@ class TasksController extends Controller
      */
     public function edit($id)
     {
-    
         // idの値でメッセージを検索して取得
         $task = Task::findOrFail($id);
 
@@ -90,6 +92,7 @@ class TasksController extends Controller
         return view('tasks.edit', [
             'task' => $task,
         ]);
+    
     }
 
     /**
@@ -101,7 +104,7 @@ class TasksController extends Controller
      */
     public function update(Request $request, $id)
     {
-           // idの値でメッセージを検索して取得
+        // idの値でメッセージを検索して取得
         $task = Task::findOrFail($id);
         // メッセージを更新
         $task->content = $request->content;
@@ -109,7 +112,7 @@ class TasksController extends Controller
 
         // トップページへリダイレクトさせる
         return redirect('/');
-    
+     
     }
 
     /**
@@ -120,12 +123,13 @@ class TasksController extends Controller
      */
     public function destroy($id)
     {
-         // idの値でメッセージを検索して取得
+        // idの値でメッセージを検索して取得
         $task = Task::findOrFail($id);
         // メッセージを削除
         $task->delete();
 
         // トップページへリダイレクトさせる
         return redirect('/');
+     
     }
 }
